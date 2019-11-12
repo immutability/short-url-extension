@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Short Item URL for eBay",
   "description": "Simple URL shortener for eBay listings, using no 3rd party service but eBay itself.",
-  "version": "0.1",
+  "version": "0.2",
   "icons": {
     "48": "logo_48.png",
     "128": "logo_128.png"
@@ -20,8 +20,7 @@
   },
   "permissions": [
     "activeTab",
-	"declarativeContent",
-	"clipboardRead",
-	"clipboardWrite"
+    "declarativeContent",
+    "clipboardWrite"
   ]
 }
