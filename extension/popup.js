@@ -28,7 +28,7 @@ function renderStatus(statusText) {
 }
 
 function parseTheUrl(url) {
-	var urlPattern = /ebay\.(com|de|co\.uk)\/itm/
+	var urlPattern = /ebay\.(com|de|co\.uk|com\.au|at|be|ca|fr|ie|it|com\.hk|com\.my|com\.sg|nl|ph|pl|es|ch)\/itm/
 	if(urlPattern.test(url)) {
 		var idExt = /\/\d+\?/.exec(url)[0];
 		var id = /\d+/.exec(idExt)[0];

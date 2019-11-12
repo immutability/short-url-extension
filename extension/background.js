@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
         // That fires for supported eBay URLs
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlMatches: 'ebay\.(com|de|co\.uk)\/itm' },
+            pageUrl: { urlMatches: 'ebay\.(com|de|co\.uk|com\.au|at|be|ca|fr|ie|it|com\.hk|com\.my|com\.sg|nl|ph|pl|es|ch)\/itm' },
           })
         ],
         // And shows the extension's page action.
