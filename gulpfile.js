@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const zip = require('gulp-zip');
+const filter = require('gulp-filter');
 const bump = require('gulp-bump');
 const crx = require('gulp-crx-pack');
 const del = require('del');
@@ -9,14 +10,25 @@ const c = require('ansi-colors');
 const manifest = require('./extension/manifest.json');
 const config = require('./build.json');
 const fs = require('fs');
+const semver = require('semver');
 
 // version bump task - should only be used with major/minor/patch version type
 // as semver is not supported by extension manifest
 gulp.task('bump', () => {
     const versionType = argv.type || 'patch';
-    log(`Bumping version: ${c.yellow(versionType)}`);
+    const newVer = semver.inc(manifest.version, versionType);
+    log(`Bumping version: ${c.yellow(versionType)} from ${c.cyan(manifest.version)} to ${c.magenta(newVer)}`);
+
+    // uses gulp-filter
+    const manifestFilter = filter('**/manifest.json', {restore: true});
+    const regularJsons = filter(['**', '!**/manifest.json']);
+
     return gulp.src(['extension/manifest.json', 'package.json', 'package-lock.json'])
-        .pipe(bump({type: versionType}))
+        .pipe(bump({version: newVer}))
+        .pipe(manifestFilter)
+        .pipe(gulp.dest('./extension'))
+        .pipe(manifestFilter.restore)
+        .pipe(regularJsons)
         .pipe(gulp.dest('./'));
 });
 
