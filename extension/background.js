@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(function() {
     // With a new rule ...
     chrome.declarativeContent.onPageChanged.addRules([
       {
-        // That fires when a page's URL contains a 'g' ...
+        // That fires for supported eBay URLs
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlMatches: 'ebay\.(com|de|co\.uk)\/itm' },
