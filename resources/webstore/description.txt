@@ -1,10 +1,9 @@
-Ever tried to share that perfect gizmo that you just found on eBay with your friends on IM, only to find that the URL is so long it eats up several lines of your chat window? Ever wondered why the eBay URLs are so ridiculously long?
+Ever tried to share the link to the perfect gizmo you just found on eBay with your friends, only to find that the URL is so long it eats up several lines of your chat window? Ever wondered why the eBay URLs are often so ridiculously long?
 
-Well, worry no more. Besides many 3rd party URL shorteners, eBay itself supported the short form of the item URLs for a while. This extension will allow you to copy the shortened URL into your clipboard with a single click of your mouse for easy sharing on social networks and instant messaging. Never again clutter your chat windows with multi-line URLs!
+This extension comes to the rescue and will allow you to copy the short version of the URL into your clipboard with a single click. Useful for easy sharing on social networks and via instant messaging. Forget those with multi-line URLs!
 
-This extension currently supports the following eBay sites:
-* ebay.com
-* ebay.co.uk
-* ebay.de
+How it works: unlike the usual URL shorteners, this one does not rely on any 3rd party service. What it actually does is strip all of the unnecessary parts of the item URL, like search parameters or product description, leaving only the bare minimum (the domain and the item ID) for a nice, short URL that's easy to share.
+
+The extension currently supports 18 international eBay sites, including ebay.com, ebay.co.uk, ebay.de, ebay.com.au and many others.
 
 Think you've found a bug? Let me know and I'll see what I can do.
