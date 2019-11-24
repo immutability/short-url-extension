@@ -5,22 +5,27 @@
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
+        font-size: 14px;
+        width: 380px;
+        max-width: 380px;
       }
-      #status {
+      #success {
         /* avoid an excessively wide status text */
         white-space: pre;
         text-overflow: ellipsis;
         overflow: hidden;
-        width: 380px;
-        max-width: 380px;
+        display: none;
+      }
+      #failure {
+        display: none;
       }
     </style>
 	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
-    <div id="status"></div>
+    <div id="success"></div>
+    <div id="failure"></div>
 	<textarea id="sandbox" style="position:absolute;left:1000px;width:0;height:0;"></textarea>
   </body>
 </html>

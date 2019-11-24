@@ -1,12 +1,4 @@
-/**
- * Get the current URL.
- *
- * @param {function(string)} callback - called when the URL of the current tab
- *   is found.
- **/
 function getCurrentTabUrl(callback) {
-  // Query filter to be passed to chrome.tabs.query - see
-  // https://developer.chrome.com/extensions/tabs#method-query
   var queryInfo = {
     active: true,
     currentWindow: true
@@ -22,9 +14,20 @@ function getCurrentTabUrl(callback) {
   });
 }
 
-function renderStatus(statusText) {
-  var linkEl = document.getElementById('status');
-  linkEl.innerHTML = statusText;
+function renderSuccess(url) {
+	$('#success').append(`Short URL copied to clipboard:<br/><a href="${url}" target="_blank">${url}</a>`);
+	$('#success').show();
+}
+
+function renderFailure(message) {
+	$('#failure').append(
+`Could not find Item ID.<br/>If you believe this is an error, please report the full URL using the \
+<a href="${getExtensionHomepage()}" target="_blank">Extension Support Page</a>`);
+	$('#failure').show();
+}
+
+function getExtensionHomepage() {
+	return 'https://chrome.google.com/webstore/detail/' + chrome.runtime.id;
 }
 
 function parseTheUrl(url) {
@@ -38,16 +41,20 @@ function parseTheUrl(url) {
 		return '';
 }
 
+function copyToClipboard(url) {
+	var sandbox = $('#sandbox').val(url).select();
+	document.execCommand('copy');
+	sandbox.val('');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
-	var shortUrl = parseTheUrl(url)
+	var shortUrl = parseTheUrl(url);
 	if(shortUrl.length > 0) {
-		renderStatus(shortUrl + '<br/>Copied to clipboard!');
-		var sandbox = $('#sandbox').val(shortUrl).select();
-		document.execCommand('copy');
-		sandbox.val('');
+		copyToClipboard(shortUrl);
+		renderSuccess(shortUrl);
+	} else {
+		renderFailure();
 	}
-	else
-		renderStatus('Could not find eBay Item ID / not on eBay?');
   });
 });
