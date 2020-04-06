@@ -21,6 +21,6 @@
     "gulp-crx-pack": "PavelVanecek/gulp-crx#ab9b32fe23326bd80f6572d58223372043feeeb8",
     "gulp-filter": "^6.0.0",
     "gulp-zip": "^5.0.1",
-    "minimist": "^1.2.2"
+    "minimist": "^1.2.3"
   }
 }
